@@ -308,6 +308,42 @@ footer a {
     }
 }
 
+/* Accordion-Karten Styling */
+.accordion-item {
+  background-color: #ffffff;        /* Weißer Hintergrund */
+  border-radius: 12px !important;     /* Abgerundete Ecken */
+  border: 1px solid #e0e0e0;         /* Dezenter Rand */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);     /* Schöner, weicher Schatten */
+  margin-bottom: 1rem;           /* Abstand zwischen den Accordions */
+  overflow: hidden;               /* Verhindert unschöne Ecken beim Aufklappen */
+}
+
+/* Button/Header innerhalb des Accordions anpassen */
+.accordion-button {
+  background-color: #ffffff;
+  color: #2c2c2c;
+  font-weight: 600;
+  border-radius: 12px !important;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Styling beim Anklicken/Fokussieren */
+.accordion-button:not(.collapsed) {
+  background-color: #A3A3CC; /* beim Aufklappen */
+  color: #555588;            /* Lila-Akzentfarbe */
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+
+/* Inhalt beim Aufklappen */
+.accordion-body {
+  padding: 1.25rem 1.5rem;
+  background-color: #ffffff;
+  color: #4a4a4a;
+}
+
 /* ABWEICHUNG BEI SMARTPHONE (<768px Bildschirmbreite) */
 @media (max-width: 767px) {
     /* kleinere Schriftgröße */
