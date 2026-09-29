@@ -129,10 +129,10 @@ main {
     background: rgba(255,255,255,0.85);
 }
 .card-uebergabe {
-    background-image: url('img/uebergabe.png');  
+    background-image: url('../img/uebergabe.png');  
 }
 .card-abholung {
-    background-image: url('img/abholung.png');
+    background-image: url('../img/abholung.png');
 }
 
 /* CARDS KLEIDERART */
@@ -147,22 +147,22 @@ main {
     background: rgba(255,255,255,0.5);
 }
 .card-herrenbekleidung {
-    background-image: url('img/herren.png');  
+    background-image: url('../img/herren.png');  
 }
 .card-damenbekleidung {
-    background-image: url('img/damen.png');
+    background-image: url('../img/damen.png');
 }
 .card-kinderbekleidung {
-    background-image: url('img/kinder.png');
+    background-image: url('../img/kinder.png');
 }
 .card-accessoires {
-    background-image: url('img/accessoires.png');
+    background-image: url('../img/accessoires.png');
 }
 .card-schuhe {
-    background-image: url('img/schuhe.png');
+    background-image: url('../img/schuhe.png');
 }
 .card-decken {
-    background-image: url('img/decken.png');
+    background-image: url('../img/decken.png');
 }
 
 /* CARDS KRISENGEBIETE */
@@ -192,7 +192,7 @@ main {
     background-image: url('https://flagcdn.com/w320/sy.png');
 }
 .card-krisengebiet-egal {
-    background-image: url(/img/logo.png);
+    background-image: url('../img/logo.png');
 }
 
 
