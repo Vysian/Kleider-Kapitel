@@ -1,0 +1,326 @@
+/* Verhindert horizontales Scrollen, wenn breiter als Bildschirm */
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    background-color: lavender;
+    display: flex;                                  /* Flexcontainer, Body-Elemente aneinander geordnet */
+    flex-direction: column;                         /* Body-Elemente angeordnet wie in einer Spalte von oben nach unten */
+    min-height: 100vh;                              /* 100% Bildschirmhöhe (vh=viewport height) */
+}
+
+/* NAVIGATIONSLEISTE IM HEADER */
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    min-height: 80px;
+    align-items: stretch;
+    border-color: transparent;
+    border-bottom: none;
+    overflow-x: hidden;
+}
+/* Navbrand = Logo und Titel */
+.navbar-brand {
+    color: white;
+    align-self: center;
+}
+/* Navbar Hamburgermenü */
+.navbar .navbar-collapse {
+    align-self: flex-end;
+    background-color: transparent;
+    border-bottom: none;
+}
+.navbar .nav-tabs {
+    border-bottom: none;                            /* keine untere Linie bei Tabs */
+    border-color: transparent;                      /* farbloser Tabrand */
+}
+/* inaktive Tabs */
+.navbar .nav-tabs .nav-link {
+    background-color: #555588;                    /* Hintergrund dunkler als Header */
+    color: rgba(255, 255, 255, 0.75);             /* Text leicht ausgegraut, 75% Deckkraft */
+    border-bottom: none;
+}
+/* aktiver Tab */
+.navbar .nav-tabs .nav-link.active {
+    background-color: lavender;                     /* Hintergrund wie Main für aktive Register Optik */
+    color: black;                                   /* Schriftfarbe schwarz */                 
+    border-bottom: none;
+}
+
+
+/* MAIN = Content-Bereich */
+main {
+    padding-top: 1.5rem;                            /* Abstand von Main zu Header */
+    flex: 1;                                        /* gesamte freie Fläche mit Main ausfüllen, damit Footer ganz unten positioniert ist */
+}
+
+/* HINWEISZETTEL */
+#hinweise-content {
+    background-color: #faf9a9;                    /* gelber Hintergrund angelehnt an Post-Its */
+    padding: 1.5rem;
+    border-radius: 4px;                             /* abgerundete Ecken */
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.15);     /* Schatten um Hinweiszettel */
+    transform: rotate(-1deg);                       /* Drehung um -1 Grad */
+    position: relative;                             /* damit Pinnadel am Zettel anstatt im Browser fixiert wird */
+}
+/* Pinnadel */
+#hinweise-content::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background-color: #666699;
+    border-radius: 50%;
+    position: absolute;                             /* um Pinnadel an Hinweiszettel zu fixieren */
+    top: -7px;
+    left: 50%;                                      /* linksbündig an Mittellinie(50%) vom Zettel ausgerichtet */
+    transform: translateX(-50%);                    /* Pinnadel um die Hälfte(50%) der eigenen Breite horizontal nach links verschieben */
+}
+
+/* CARDS ALLGEMEIN */
+/* Karte standardmäßig weiß ohne Rand, abgerundete Ecken, Hintergrundbilder ragen nicht über Kartenform */
+.card {
+    background-color: white;
+    border: none;
+    border-radius: 5%;
+    overflow-x: hidden;
+    transition: background-color 0.2s;
+}
+/* falls Bild nicht lädt, hat ausgewählte Karte eine andere Basisfarbe */
+.card.selected {
+    background-color: #9999CC;
+}
+/* Karte kriegt nach Auswählen lila Overlay und Schriftfarbe weiß*/
+.card.selected .card-title,
+.card.selected .card-text {
+    color: white;
+}
+.card.selected .card-body {
+    background: rgba(102, 102, 153, 0.9);
+}
+/* normaler Mauszeiger, wenn Karte nicht anklickbar */
+.disabled-card {
+    pointer-events: none;
+}
+/* anderer Mauszeiger bei Eingabefeld in Karte (PLZ-Feld bei Abholoption) */
+.disabled-card input {
+    pointer-events: all;
+}
+
+/* ausgegrauter Text, wenn Karte nicht anklickbar */
+.disabled-card .card-title,
+.disabled-card .card-text {
+    color: #999;
+}
+/* Hinweistext zur PLZ-EIngabe für Validierung nicht ausgegraut */
+.disabled-card #plzHinweis {
+    color: #333;
+}
+
+/* CARDS SPENDENMETHODE */
+/* Hintergrund = Bild, voll ausgefüllt, zentriert, weißes Overlay für Kontrast zum Text */
+.card-spendenmethode {
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 3/2;
+    min-height: unset;
+}
+.card-spendenmethode .card-body {
+    background: rgba(255,255,255,0.85);
+}
+.card-uebergabe {
+    background-image: url('img/uebergabe.png');  
+}
+.card-abholung {
+    background-image: url('img/abholung.png');
+}
+
+/* CARDS KLEIDERART */
+/* Kartenhintergrund = Bild, voll ausgefüllt, unten ausgerichtet, weißes Overlay für Kontrast zum Kartentext */
+.card-kleiderart {
+    background-size: cover;
+    background-position: bottom;
+    aspect-ratio: 4/3;
+    min-height: unset;
+}
+.card-kleiderart .card-body {
+    background: rgba(255,255,255,0.5);
+}
+.card-herrenbekleidung {
+    background-image: url('img/herren.png');  
+}
+.card-damenbekleidung {
+    background-image: url('img/damen.png');
+}
+.card-kinderbekleidung {
+    background-image: url('img/kinder.png');
+}
+.card-accessoires {
+    background-image: url('img/accessoires.png');
+}
+.card-schuhe {
+    background-image: url('img/schuhe.png');
+}
+.card-decken {
+    background-image: url('img/decken.png');
+}
+
+/* CARDS KRISENGEBIETE */
+/* Kartenhintergrund = Bild, voll ausgefüllt, unten ausgerichtet, weißes Overlay */
+.card-krisengebiet {
+    background-size: cover;
+    background-position: bottom;
+    aspect-ratio: 4/3;
+    min-height: unset;
+}
+.card-krisengebiet .card-body {
+    background: rgba(255,255,255,0.75);
+}
+.card-krisengebiet-deutschland {
+    background-image: url('https://flagcdn.com/w320/de.png');
+}
+.card-krisengebiet-ukraine {
+    background-image: url('https://flagcdn.com/w320/ua.png');
+}
+.card-krisengebiet-sudan {
+    background-image: url('https://flagcdn.com/w320/sd.png');
+}
+.card-krisengebiet-afghanistan {
+    background-image: url('https://flagcdn.com/w320/af.png');
+}
+.card-krisengebiet-syrien {
+    background-image: url('https://flagcdn.com/w320/sy.png');
+}
+.card-krisengebiet-egal {
+    background-image: url(/img/logo.png);
+}
+
+
+/* BUTTONS */
+/* anklickbarer Button in lila */
+.btn-primary {
+    background-color: #666699;
+    border-color: #666699;
+}
+/* nicht-anklickbarer Button in weiß mit ausgegrauten Text */
+.btn-primary:disabled {
+    background-color: white;
+    border-color: #ccc;
+    color: #999;
+    opacity: 1;
+}
+
+.form-check-input:checked {
+    background-color: #555588;
+}
+
+/* FORTSCHRITTSLEISTE */
+.fortschrittsleiste {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+.schritt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.kreis {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #ffffff;
+    color: #333;
+}
+.linie {
+    flex: 1;
+    height: 2px;
+    background-color: #ccc;
+    margin-bottom: 18px;
+}
+.schritt.aktiv .kreis {  
+    background-color: #666699;
+    color: white;
+}
+.schritt.abgeschlossen .kreis {
+    background-color: #9999CC;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background-color: #666699;
+    padding: 1rem 0;
+    margin-top: 1.5rem;
+    color: white;
+}
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+/* HOVEREFFEKTE (WENN MAUS VORHANDEN) */
+@media (hover: hover) {
+    /* Navigationsleiste im Header */
+    .navbar .nav-tabs .nav-link:hover {
+        color: white;
+        border-color: transparent;
+    }
+    /* Karte kriegt bei Hover lila Overlay und weiße Schriftfarbe */
+    .card:hover .card-title,
+    .card:hover .card-text {
+        color: white;
+    }
+    .card:hover .card-body {
+        background: rgba(102, 102, 153, 0.9);
+    }
+    .disabled-card:hover {
+        background-color: white;
+    }
+    /* disabled Karte kriegt weißes Overlay*/
+    .disabled-card:hover .card-body {
+        background: rgba(255, 255, 255, 0.85);
+    }
+    .disabled-card:hover .card-title,
+    .disabled-card:hover .card-text {
+        color: #999;
+    }
+    /* weißes Overlay, wenn Mauszeiger auf PLZ-Inputfeld bei ABholkarte */
+    .card-abholung:has(input:hover) .card-body {
+        background: rgba(255, 255, 255, 0.85);
+    }
+    .card-abholung:has(input:hover) .card-title,
+    .card-abholung:has(input:hover) .card-text {
+        color: inherit;
+    }
+    /* Button kriegt dunkleres lila Overflay bei */
+    .btn-primary:hover {
+        background-color: #555588;
+        border-color: #555588;
+    }
+}
+
+/* ABWEICHUNG BEI SMARTPHONE (<768px Bildschirmbreite) */
+@media (max-width: 767px) {
+    /* kleinere Schriftgröße */
+    .card-title {
+    font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .navbar-collapse {
+        display: flex;
+        align-items: flex-end;
+        background-color: transparent;
+        border-bottom: none;
+    }
+}

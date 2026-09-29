@@ -1,0 +1,20 @@
+{
+  "name": "Kleider-Kapitel e.V.",
+  "short_name": "Kleider-Kapitel",
+  "start_url": "/formular.html",
+  "display": "standalone",
+  "background_color": "#e6e6fa",
+  "theme_color": "#666699",
+  "icons": [
+    {
+      "src": "img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
