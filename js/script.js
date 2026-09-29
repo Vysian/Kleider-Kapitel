@@ -427,7 +427,6 @@ function initialisiereValidierung() {
         if (!el) return;
         el.addEventListener("change", function () {
             if (el.checked) {
-                el.classList.add("is-valid");
                 el.classList.remove("is-invalid");
             } else {
                 el.classList.add("is-invalid");
