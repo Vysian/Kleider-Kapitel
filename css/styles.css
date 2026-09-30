@@ -354,7 +354,7 @@ footer a {
         font-size: 0.8rem;
     }
     .card-spendenmethode p {
-    line-height: 0.7;
+    line-height: 1.15 !important;
 }
 }
 
