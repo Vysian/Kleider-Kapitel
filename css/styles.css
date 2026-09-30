@@ -122,8 +122,14 @@ main {
 .card-spendenmethode {
     background-size: cover;
     background-position: center;
+    /* Größenverhältnis Karte 3:2, Höhe richtet sich normalerweise nach Breite, nach unten wachsend falls card-text Platz erfordert, um Scrollen zu vermeiden */
     aspect-ratio: 3/2;
-    min-height: unset;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .card-spendenmethode .card-body {
     background: rgba(255,255,255,0.85);
@@ -140,8 +146,14 @@ main {
 .card-kleiderart {
     background-size: cover;
     background-position: bottom;
+    /* Größenverhältnis Karte 4:3, Höhe richtet sich normalerweise nach Breite, nach unten wachsend falls card-text Platz erfordert, um Scrollen zu vermeiden */
     aspect-ratio: 4/3;
-    min-height: unset;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .card-kleiderart .card-body {
     background: rgba(255,255,255,0.5);
@@ -170,8 +182,14 @@ main {
 .card-krisengebiet {
     background-size: cover;
     background-position: bottom;
+    /* Größenverhältnis Karte 4:3, Höhe richtet sich normalerweise nach Breite, nach unten wachsend falls card-text Platz erfordert, um Scrollen zu vermeiden */
     aspect-ratio: 4/3;
-    min-height: unset;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .card-krisengebiet .card-body {
     background: rgba(255,255,255,0.75);
