@@ -128,9 +128,6 @@ main {
 .card-spendenmethode .card-body {
     background: rgba(255,255,255,0.85);
 }
-.card-spendenmethode p {
-    line-height: 1.15;
-}
 .card-uebergabe {
     background-image: url('../img/uebergabe.png');  
 }
@@ -356,6 +353,9 @@ footer a {
     .card-text {
         font-size: 0.8rem;
     }
+    .card-spendenmethode p {
+    line-height: 1.15;
+}
 }
 
 @media (min-width: 992px) {
