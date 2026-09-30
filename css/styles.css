@@ -354,6 +354,15 @@ footer a {
     .card-text {
         font-size: 0.8rem !important;
     }
+
+    #plz {
+        font-size: 0.8rem !important;
+        padding: 0.25rem 0.5rem !important;
+    }
+    label[for="plz"] {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.1rem !important;
+    }
 }
 
 @media (min-width: 992px) {
