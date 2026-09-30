@@ -351,10 +351,10 @@ footer a {
     font-size: 1rem;
     }
     .card-text {
-        font-size: 0.8rem;
+        font-size: 0.8rem !important;
     }
     .card-spendenmethode p {
-    line-height: 0.9 !important;
+    line-height: 0.5 !important;
     }
 }
 
