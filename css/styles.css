@@ -336,6 +336,7 @@ footer a {
 
 .accordion-button:focus {
   box-shadow: none;
+}
 
 /* Inhalt beim Aufklappen */
 .accordion-body {
