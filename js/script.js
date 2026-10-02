@@ -75,10 +75,17 @@ function geheZuSchritt(nr) {
   // Toggle WEITER-Button bei Auswahl eines Krisengebiets
   function toggleAuswahl(element) {
     element.classList.toggle("selected");
-    
-    const anzahlAusgewaehlt = document.querySelectorAll(".selected").length;
-    document.getElementById("btn-weiter-krisengebiet").disabled = anzahlAusgewaehlt === 0;
+    pruefeUmfang();
   }
+    function pruefeUmfang() {
+        const kartons = document.getElementById("kartons").value;
+        const saecke = document.getElementById("saecke").value;
+        
+       
+        const hatUmfang = (kartons !== "0" || saecke !== "0");
+        const hatKleiderart = document.querySelectorAll(".selected:not(.card-krisengebiet)").length > 0;
+        document.getElementById("btn-weiter-krisengebiet").disabled = !(hatUmfang && hatKleiderart);
+    }
   // ZURÜCK von Schritt 2 zu Schritt 1
   function zurueckZuSpendemethode() {
     document.getElementById("sektion-art").style.display = "none";
@@ -282,11 +289,18 @@ function geheZuSchritt(nr) {
     if (!checkAlter.checked) { 
         checkAlter.classList.add("is-invalid"); 
         valide = false; 
-    }
-    else { 
+    } else { 
         checkAlter.classList.remove("is-invalid"); 
     }
     
+    if (!checkDaten.checked) { 
+        checkDaten.classList.add("is-invalid"); 
+        valide = false; 
+    } else { 
+        checkDaten.classList.remove("is-invalid"); 
+    }
+    
+    // ERST wenn beide Checkboxen geprüft wurden, abbrechen:
     if (!valide) return;
 
     // Sektion wechseln
