@@ -112,19 +112,19 @@
                             <div class="card h-100 card-spendenmethode card-uebergabe" onclick="waehleAbgabe()" style="cursor: pointer;">
                                 <div class="card-body">
                                     <h5 class="card-title">Übergabe vor Ort</h5>
-                                    <p class="card-text">Du übergibst uns die Kleidung persönlich in unserer Geschäftsstelle.</p>
-                                    <p class="card-text">Unsere Adresse: <br>Kleiderstraße 1 <br>31415 Kleiderstadt</p>
-                                    <p class="card-text">Unsere Öffnungszeiten: <br>Montag bis Samstag, 10:00 - 18:00 Uhr</p>
+                                    <p class="card-text mb-1">Du übergibst uns die Kleidung persönlich in unserer Geschäftsstelle.</p>
+                                    <p class="card-text mb-1">Unsere Adresse: <br>Kleiderstraße 1 <br>31415 Kleiderstadt</p>
+                                    <p class="card-text mb-0">Unsere Öffnungszeiten: <br>Montag bis Samstag, 10:00 - 18:00 Uhr</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="card h-100 card-spendenmethode card-abholung disabled-card" id="abholkarte" onclick="waehleAbholung()" style="cursor: pointer;">
                                 <div class="card-body">
-                                    <h5 class="card-title">Abholung</h5>
-                                    <p class="card-text">Unser Sammelteam holt die Kleidung bei dir ab.</p>
-                                    <p class="card-text" id="plzHinweis">Gib deine Postleitzahl an, um zu prüfen, ob wir in deiner Region Abholungen anbieten.</p>
-                                    <div class="mb-3">
+                                    <h5 class="card-title mb-1">Abholung</h5>
+                                    <p class="card-text mb-2">Unser Sammelteam holt die Kleidung bei dir ab.</p>
+                                    <p class="card-text mb-1" id="plzHinweis">Gib deine Postleitzahl an, um zu prüfen, ob wir in deiner Region Abholungen anbieten.</p>
+                                    <div class="mb-1">
                                         <label for="plz" class="form-label" >PLZ</label>
                                         <input type="text" class="form-control" id="plz" placeholder="12345" maxlength="5" oninput="pruefePLZ()" onclick="event.stopPropagation()" onkeydown="if(event.key === 'Enter' && !document.getElementById('abholkarte').classList.contains('disabled-card')) waehleAbholung()">
                                     </div>
