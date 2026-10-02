@@ -27,6 +27,10 @@ function aktualisiereLeiste(nr) {
     }
 }
 function geheZuSchritt(nr) {
+    if (nr ===5) {
+        weiterZuUebersicht();
+        return;
+    }
     const sektionen = ["sektion-spendemethode", "sektion-art", "sektion-krisengebiet", "sektion-angaben", "sektion-uebersicht"];
     sektionen.forEach(s => document.getElementById(s).style.display = "none");
     document.getElementById(sektionen[nr - 1]).style.display = "block";
