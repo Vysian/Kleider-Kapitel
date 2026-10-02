@@ -132,7 +132,28 @@
                 <!-- 2) KLEIDERARTEN -->
                 <section id="sektion-art" style="display: none;">
                     <h3>Was möchtest du spenden?</h3>
-                    <p>Bitte wähle die Art der Kleidung aus, die du spenden möchtest (Mehrfachauswahl möglich) und bestätige deine Eingabe mit <em>Weiter</em>.</p>
+                    <p>Bitte wähle den Umfang und die Art der Kleidung aus, die du spenden möchtest und bestätige deine Eingabe mit <em>Weiter</em>.</p>
+                    <h6>Wie viele Karton und/oder Säcke möchtest du spenden?</h6>
+                    <div class="row g-3    
+                        <div class="col-12 col-md-6 mb-3">
+                                <label for="kartons" class="form-label">Anzahl der Kartons</label>
+                                <select class="form-select" id="kartons">
+                                    <option value="0">0 Kartons</option>
+                                    <option value="1-2">1 bis 2 Kartons</option>
+                                    <option value="3-4">3 bis 4 Kartons</option>
+                                    <option value=">5">Mehr als 5 Kartons</option>
+                                </select>
+                            </div>
+                         <div class="col-12 col-md-6 mb-3">
+                                <label for="saecke" class="form-label">Anzahl der Säcke</label>
+                                <select class="form-select" id="saecke">
+                                    <option value="0">0 Säcke</option>
+                                    <option value="1-2">1 bis 2 Säcke</option>
+                                    <option value="3-4">3 bis 4 Säcke</option>
+                                    <option value=">5">Mehr als 5 Säcke</option>
+                                </select>
+                            </div>
+                    <h6>Welche Kleiderart(en) möchtest du spenden? (Mehrfachauswahl möglich)</h6>
                         <div class="row g-3">
                             <div class="col-6 col-md-4">
                                 <div class="card h-100 card-kleiderart card-herrenbekleidung" onclick="toggleAuswahl(this)" style="cursor: pointer;">
@@ -246,84 +267,146 @@
 
                 <!-- 4) PERSÖNLICHE ANGABEN -->
                     
-                    <section id="sektion-angaben" style="display: none;">
-                        <p>Bitte gib deine Daten ein. Pflichtfelder sind mit einem Sternchen (*) versehen.</p>
-                        <div class="mb-3" >
-                            <label for="vorname" class="form-label">Vorname*</label>
-                            <input type="text" class="form-control" id="vorname" placeholder="Vorname" oninput="toggleWeiterButton()">
+                <section id="sektion-angaben" style="display: none;">
+                    <h3>Persönliche Angaben</h3>
+                    <p>Bitte gib deine Daten ein. Pflichtfelder sind mit einem Sternchen (*) versehen.</p>
+                    <div class="mb-3" >
+                        <label for="vorname" class="form-label">Vorname*</label>
+                        <input type="text" class="form-control" id="vorname" placeholder="Vorname" oninput="toggleWeiterButton()">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nachname*</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nachname" oninput="toggleWeiterButton()">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-Mail-Adresse*</label>
+                        <input type="email" class="form-control" id="email" placeholder="E-Mail-Adresse" oninput="toggleWeiterButton()">
+                        <div class="invalid-feedback">Bitte gib eine gültige E-Mail-Adresse ein (z.B. name@beispiel.de).</div>
+                    </div>
+                    <div id="abholangaben" style="display: none;">
+                        <div class="row">
+                            <h6>Abholadresse</h6>
+                            <div class="col-md-8 mb-3">
+                                <label for="straße" class="form-label">Straße*</label>
+                                <input type="text" class="form-control" id="straße" placeholder="Straße" oninput="toggleWeiterButton()">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="hausnummer" class="form-label">Hausnummer*</label>
+                                <input type="text" class="form-control" id="hausnummer" placeholder="Hausnummer" oninput="toggleWeiterButton()">
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <label for="adresszusatz" class="form-label">Adresszusatz</label>
+                                <input type="text" class="form-control" id="adresszusatz" placeholder="optional: Adresszusatz, z.B. Etage, c/o...">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="telnummer" class="form-label">Telefon-/Mobilfunknummer</label>
+                                <input type="text" class="form-control" id="telnummer" placeholder="optional für Rückfragen am Abholtag">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="abholplz" class="form-label">PLZ*</label>
+                                <input type="text" class="form-control" id="abholplz" placeholder="PLZ" maxlength="5" oninput="toggleWeiterButton(); pruefeAbholPLZ()">
+                                <div id="fehlerAbholPLZ" class="form-text" style="color: red; display: none;">Die Abholadresse muss im Raum 31... liegen.</div>
+                            </div>
+                            <div class="col-md-8 mb-3">
+                                <label for="abholort" class="form-label">Ort*</label>
+                                <input type="text" class="form-control" id="abholort" placeholder="Ort" oninput="toggleWeiterButton()">
+                            </div>
+                        </div> <!-- ENDE Eingabefelder für Abholadresse -->
+                        <div class="mb-3">
+                            <label for="abholtag" class="form-label">Wunsch-Abholtermin*</label>
+                            <select class="form-select" id="abholtag" onchange="toggleWeiterButton()">
+                                <option value="">Bitte wählen</option>
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="name" class="form-label">Nachname*</label>
-                            <input type="text" class="form-control" id="name" placeholder="Nachname" oninput="toggleWeiterButton()">
+                            <label for="abholzeit" class="form-label">Wunsch-Abholzeit*</label>
+                            <select class="form-select" id="abholzeit" onchange="toggleWeiterButton()">
+                                <option value="">Bitte wählen</option>
+                                <option value="vormittags (10:00 - 12:00 Uhr)">vormittags (10:00 - 12:00 Uhr)</option>
+                                <option value="mittags (12:00 - 14:00 Uhr)">mittags (12:00 - 14:00 Uhr)</option>
+                                <option value="nachmittags (14:00 - 18:00 Uhr)">nachmittags (14:00 - 18:00 Uhr)</option>
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">E-Mail-Adresse*</label>
-                            <input type="email" class="form-control" id="email" placeholder="E-Mail-Adresse" oninput="toggleWeiterButton()">
-                            <div class="invalid-feedback">Bitte gib eine gültige E-Mail-Adresse ein (z.B. name@beispiel.de).</div>
+                    </div> <!-- ENDE Abholangaben (Adresse+Zeitpunkt) -->
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" onclick="zurueckZuKrisengebiet()" style="cursor:pointer;" class="btn btn-primary">Zurück</button>
+                            <button type="button" onclick="weiterZuUebersicht()" id="btn-weiter-bestaetigung" style="cursor:pointer;"  class="btn btn-primary">Weiter</button>
                         </div>
-                        <div id="abholangaben" style="display: none;">
-                            <div class="row">
-                                <h6>Abholadresse</h6>
-                                <div class="col-md-8 mb-3">
-                                    <label for="straße" class="form-label">Straße*</label>
-                                    <input type="text" class="form-control" id="straße" placeholder="Straße" oninput="toggleWeiterButton()">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="hausnummer" class="form-label">Hausnummer*</label>
-                                    <input type="text" class="form-control" id="hausnummer" placeholder="Hausnummer" oninput="toggleWeiterButton()">
-                                </div>
-                                <div class="col-md-8 mb-3">
-                                    <label for="adresszusatz" class="form-label">Adresszusatz</label>
-                                    <input type="text" class="form-control" id="adresszusatz" placeholder="optional: Adresszusatz, z.B. Etage, c/o...">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="telnummer" class="form-label">Telefon-/Mobilfunknummer</label>
-                                    <input type="text" class="form-control" id="telnummer" placeholder="optional für Rückfragen am Abholtag">
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <label for="abholplz" class="form-label">PLZ*</label>
-                                    <input type="text" class="form-control" id="abholplz" placeholder="PLZ" maxlength="5" oninput="toggleWeiterButton(); pruefeAbholPLZ()">
-                                    <div id="fehlerAbholPLZ" class="form-text" style="color: red; display: none;">Die Abholadresse muss im Raum 31... liegen.</div>
-                                </div>
-                                <div class="col-md-8 mb-3">
-                                    <label for="abholort" class="form-label">Ort*</label>
-                                    <input type="text" class="form-control" id="abholort" placeholder="Ort" oninput="toggleWeiterButton()">
-                                </div>
-                            </div> <!-- ENDE Eingabefelder für Abholadresse -->
-                            <div class="mb-3">
-                                <label for="abholtag" class="form-label">Wunsch-Abholtermin*</label>
-                                <select class="form-select" id="abholtag" onchange="toggleWeiterButton()">
-                                    <option value="">Bitte wählen</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <label for="abholzeit" class="form-label">Wunsch-Abholzeit*</label>
-                                <select class="form-select" id="abholzeit" onchange="toggleWeiterButton()">
-                                    <option value="">Bitte wählen</option>
-                                    <option value="vormittags (10:00 - 12:00 Uhr)">vormittags (10:00 - 12:00 Uhr)</option>
-                                    <option value="mittags (12:00 - 14:00 Uhr)">mittags (12:00 - 14:00 Uhr)</option>
-                                    <option value="nachmittags (14:00 - 18:00 Uhr)">nachmittags (14:00 - 18:00 Uhr)</option>
-                                </select>
-                            </div>
-                        </div> <!-- ENDE Abholangaben (Adresse+Zeitpunkt) -->
-                        <div class="form-check"  onchange="toggleWeiterButton()">
-                            <input class="form-check-input" type="checkbox" value="" id="checkAlter">
-                            <label class="form-check-label" for="checkAlter"> Ich bestätige, dass ich über 16 Jahre alt bin und die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen habe.*</label>
+                    </div>
+                </section>
+                
+                <!-- 5) ÜBERSICHT VOR ABSCHLUSS -->
+                <section id="sektion-uebersicht" style="display: none;">
+                    <h3>Deine Angaben</h3>
+                    <p>
+                        Bitte überprüfe nachfolgend noch einmal die Daten deiner Spende auf Vollständigkeit und Richtigkeit.<br>
+                        Solltest du Änderungen vornehmen wollen, kannst du jederzeit über die Zurück-Buttons oder direkt über die Fortschrittsleiste zum gewünschten Schritt zurückkehren.<br>
+                        Wenn alle Angaben stimmen, schließe deine Spende über den Button unten ab.
+                    </p>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">Name:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-vorname"></span> <span id="uebersicht-name"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">E-Mail-Adresse:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-email"></span></div>
+                    </div>
+                    <div id="uebersicht-abholangaben" style="display: none">
+                        <div class="row" id="uebersicht-telefonangabe" hidden>
+                            <div class="col-5 col-md-3 col-lg-3">Telefon/Mobil:</div>
+                            <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-telnummer"></span></div>
                         </div>
-                        <div class="form-check" onchange="toggleWeiterButton()">
-                            <input class="form-check-input" type="checkbox" value="" id="checkDatenverarbeitung">
-                            <label class="form-check-label" for="checkDatenverarbeitung">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu.*</label>
+                        <div class="row">
+                            <div class="col-5 col-md-3 col-lg-3">Straße und Hausnr.:</div>
+                            <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-straße"></span> <span id="uebersicht-hausnr"></span></div>
                         </div>
-                        <div class="row mt-3">
-                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                <button type="button" onclick="zurueckZuKrisengebiet()" style="cursor:pointer;" class="btn btn-primary">Zurück</button>
-                                <button type="button" onclick="weiterZuBestaetigung()" id="btn-weiter-bestaetigung" style="cursor:pointer;"  class="btn btn-primary">Registrierung abschließen</button>
-                            </div>
+                        <div class="row" id="uebersicht-adresszusatzangabe" hidden>
+                            <div class="col-5 col-md-3 col-lg-3">Adresszusatz:</div>
+                            <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-adresszusatz"></span></div>
                         </div>
-                    </section>
-  
+                        <div class="row">
+                            <div class="col-5 col-md-3 col-lg-3">Ort und PLZ:</div>
+                            <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-ort"></span> <span id="uebersicht-plz"></span></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5 col-md-3 col-lg-3">Abholzeitpunkt:</div>
+                            <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-abholtag"></span> <span id="uebersicht-abholzeit"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">Spendenmethode:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-spendenmethode"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">Umfang der Spende:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-umfang"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">Art der Kleidung:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-kleidung-art"></span></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5 col-md-3 col-lg-3">Krisengebiet:</div>
+                        <div class="col-7 col-md-9 col-lg-9"><span id="uebersicht-krisengebiet-name"></span></div>
+                    </div>
+                    <div class="form-check"  onchange="toggleWeiterButton()">
+                        <input class="form-check-input" type="checkbox" value="" id="checkAlter">
+                        <label class="form-check-label" for="checkAlter"> Ich bestätige, dass ich über 16 Jahre alt bin und die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen habe.*</label>
+                    </div>
+                    <div class="form-check" onchange="toggleWeiterButton()">
+                        <input class="form-check-input" type="checkbox" value="" id="checkDatenverarbeitung">
+                        <label class="form-check-label" for="checkDatenverarbeitung">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="datenschutz.html">Datenschutzerklärung</a> zu.*</label>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" onclick="zurueckZuAngaben()" style="cursor:pointer;" class="btn btn-primary">Zurück</button>
+                            <button type="button" onclick="weiterZuBestaetigung()" id="btn-weiter-bestaetigung" style="cursor:pointer;"  class="btn btn-primary">Registrierung abschließen</button>
+                        </div>
+                    </div>
+                </section>
 
-                <!-- 5) BESTÄTIGUNG -->
+                <!-- 6) BESTÄTIGUNG -->
                 <section id="sektion-bestaetigung" style="display: none;">
                     <h3>Vielen Dank für deine Spende!</h3>
                     <p>Die Registrierung deiner Kleiderspende ist am <span id="reg-datum"></span> um <span id="reg-zeit"></span> Uhr erfolgt.<br>Eine Bestätigung wurde per E-Mail gesendet.</p>
@@ -364,7 +447,7 @@
                     <div class="row">
                         <div class="col-5 col-md-3 col-lg-3">Krisengebiet:</div>
                         <div class="col-7 col-md-9 col-lg-9"><span id="krisengebiet-name"></span></div>
-                    </div><br>
+                    </div>
                     <p>Vielen Dank für deine Unterstützung!</p>
                 </section>
             </div> <!-- ENDE Container für Sektionen -->
