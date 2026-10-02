@@ -140,7 +140,7 @@ main {
 .card-kleiderart {
     background-size: cover;
     background-position: bottom;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     min-height: unset;
 }
 .card-kleiderart .card-body {
@@ -310,12 +310,12 @@ footer a {
 
 /* Accordion-Karten Styling */
 .accordion-item {
-  background-color: #ffffff;        /* Weißer Hintergrund */
-  border-radius: 12px !important;     /* Abgerundete Ecken */
-  border: 1px solid #e0e0e0;         /* Dezenter Rand */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);     /* Schöner, weicher Schatten */
+  background-color: #ffffff;        /* weißer Hintergrund */
+  border-radius: 12px !important;     /* abgerundete Ecken */
+  border: 1px solid #e0e0e0;         /* dezenter Rand */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);     /* leichter Schatten */
   margin-bottom: 1rem;           /* Abstand zwischen den Accordions */
-  overflow: hidden;               /* Verhindert unschöne Ecken beim Aufklappen */
+  overflow: hidden;               /* verhindert unschöne Ecken beim Aufklappen */
 }
 
 /* Button/Header innerhalb des Accordions anpassen */
@@ -330,7 +330,7 @@ footer a {
 /* Styling beim Anklicken/Fokussieren */
 .accordion-button:not(.collapsed) {
   background-color: #A3A3CC; /* beim Aufklappen */
-  color: #555588;            /* Lila-Akzentfarbe */
+  color: #555588;            /* lila-Akzentfarbe */
   box-shadow: none;
 }
 
