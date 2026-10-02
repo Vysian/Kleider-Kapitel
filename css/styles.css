@@ -345,14 +345,14 @@ footer a {
   color: #4a4a4a;
 }
 
-/* ABWEICHUNG BEI SMARTPHONE (<768px Bildschirmbreite) */
+/* ABWEICHUNG BEI SMARTPHONE UND TABLET(PORTRAIT) (max 820px Bildschirmbreite) */
 @media (max-width: 820px) {
     /* kleinere Schriftgröße */
     .card-title {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .card-text {
-        font-size: 0.8rem !important;
+        font-size: 0.85rem !important;
     }
 
     .schritt span {
