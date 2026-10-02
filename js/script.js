@@ -223,6 +223,7 @@ function geheZuSchritt(nr) {
         document.getElementById("sektion-uebersicht").style.display = "none";
         document.getElementById("sektion-angaben").style.display = "block";
         aktualisiereLeiste(4)
+    }
   // WEITER von Schritt 5 zur Bestätigung mit Zusammenfassung der Angaben
   function weiterZuBestaetigung() {
     if (!validiereAngaben()) return;
