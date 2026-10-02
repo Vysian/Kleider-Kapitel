@@ -78,14 +78,12 @@ function geheZuSchritt(nr) {
     pruefeUmfang();
   }
     function pruefeUmfang() {
-        const kartons = document.getElementById("kartons").value;
-        const saecke = document.getElementById("saecke").value;
-        
-       
-        const hatUmfang = (kartons !== "0" || saecke !== "0");
-        const hatKleiderart = document.querySelectorAll(".selected:not(.card-krisengebiet)").length > 0;
-        document.getElementById("btn-weiter-krisengebiet").disabled = !(hatUmfang && hatKleiderart);
-    }
+    const kartons = document.getElementById("kartons").value;
+    const saecke = document.getElementById("saecke").value;
+    const hatUmfang = (kartons !== "0" && kartons !== "") || (saecke !== "0" && saecke !== "");
+    const hatKleiderart = document.querySelectorAll(".card-kleiderart.selected").length > 0;
+    document.getElementById("btn-weiter-krisengebiet").disabled = !(hatUmfang && hatKleiderart);
+}
   // ZURÜCK von Schritt 2 zu Schritt 1
   function zurueckZuSpendemethode() {
     document.getElementById("sektion-art").style.display = "none";
