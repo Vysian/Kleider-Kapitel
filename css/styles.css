@@ -346,14 +346,17 @@ footer a {
 }
 
 /* ABWEICHUNG BEI SMARTPHONE (<768px Bildschirmbreite) */
-@media (max-width: 767px) {
+@media (max-width: 820px) {
     /* kleinere Schriftgröße */
     .card-title {
-    font-size: 1rem;
+        font-size: 1rem;
     }
     .card-text {
         font-size: 0.8rem !important;
     }
+
+    .schritt span {
+        font-size: 0.8rem;
 
     #plz {
         font-size: 0.8rem !important;
