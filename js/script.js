@@ -27,7 +27,7 @@ function aktualisiereLeiste(nr) {
     }
 }
 function geheZuSchritt(nr) {
-    const sektionen = ["sektion-spendemethode", "sektion-art", "sektion-krisengebiet", "sektion-angaben"];
+    const sektionen = ["sektion-spendemethode", "sektion-art", "sektion-krisengebiet", "sektion-angaben", "sektion-uebersicht"];
     sektionen.forEach(s => document.getElementById(s).style.display = "none");
     document.getElementById(sektionen[nr - 1]).style.display = "block";
     aktualisiereLeiste(nr);
@@ -226,7 +226,6 @@ function geheZuSchritt(nr) {
     }
   // WEITER von Schritt 5 zur Bestätigung mit Zusammenfassung der Angaben
   function weiterZuBestaetigung() {
-    if (!validiereAngaben()) return;
     // Kleiderarten: alle ausgewählten Kacheln die KEINE Krisengebiet-Kacheln sind
     const ausgewaehlteKleider = [];
     document.querySelectorAll(".selected:not(.card-krisengebiet)").forEach(function(karte) {
@@ -276,6 +275,19 @@ function geheZuSchritt(nr) {
       document.getElementById("infoAbholung").style.display = "none";
       document.getElementById("infoAbgabe").style.display = "block";
     } 
+    const checkAlter = document.getElementById("checkAlter");
+    const checkDaten = document.getElementById("checkDatenverarbeitung");
+    let valide = true;
+    
+    if (!checkAlter.checked) { 
+        checkAlter.classList.add("is-invalid"); 
+        valide = false; 
+    }
+    else { 
+        checkAlter.classList.remove("is-invalid"); 
+    }
+    
+    if (!valide) return;
 
     // Sektion wechseln
     document.getElementById("sektion-uebersicht").style.display = "none";
@@ -391,16 +403,7 @@ function validiereAngaben() {
         });
     }
 
-    // Checkboxen
-    ["checkAlter", "checkDatenverarbeitung"].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el.checked) {
-            el.classList.add("is-invalid");
-            valide = false;
-        } else {
-            el.classList.remove("is-invalid");
-        }
-    });
+
 
     return valide;
 }
