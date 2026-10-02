@@ -95,6 +95,11 @@
                             <div class="kreis">4</div>
                             <span>Angaben</span>
                         </div>
+                         <div class="linie"></div>
+                        <div class="schritt gesperrt" id="schritt-4">
+                            <div class="kreis">5</div>
+                            <span>Übersicht</span>
+                        </div>
                     </div>
                 </section>
 
@@ -134,25 +139,26 @@
                     <h3>Was möchtest du spenden?</h3>
                     <p>Bitte wähle den Umfang und die Art der Kleidung aus, die du spenden möchtest und bestätige deine Eingabe mit <em>Weiter</em>.</p>
                     <h6>Wie viele Karton und/oder Säcke möchtest du spenden?</h6>
-                    <div class="row g-3    
+                    <div class="row g-3">    
                         <div class="col-12 col-md-6 mb-3">
-                                <label for="kartons" class="form-label">Anzahl der Kartons</label>
-                                <select class="form-select" id="kartons">
-                                    <option value="0">0 Kartons</option>
-                                    <option value="1-2">1 bis 2 Kartons</option>
-                                    <option value="3-4">3 bis 4 Kartons</option>
-                                    <option value=">5">Mehr als 5 Kartons</option>
-                                </select>
-                            </div>
+                            <label for="kartons" class="form-label">Anzahl der Kartons</label>
+                            <select class="form-select" id="kartons" onchange="pruefeUmfang">
+                                <option value="0">0 Kartons</option>
+                                <option value="1-2">1 bis 2 Kartons</option>
+                                <option value="3-4">3 bis 4 Kartons</option>
+                                <option value=">5">Mehr als 5 Kartons</option>
+                            </select>
+                        </div>
                          <div class="col-12 col-md-6 mb-3">
-                                <label for="saecke" class="form-label">Anzahl der Säcke</label>
-                                <select class="form-select" id="saecke">
-                                    <option value="0">0 Säcke</option>
-                                    <option value="1-2">1 bis 2 Säcke</option>
-                                    <option value="3-4">3 bis 4 Säcke</option>
-                                    <option value=">5">Mehr als 5 Säcke</option>
-                                </select>
-                            </div>
+                            <label for="saecke" class="form-label">Anzahl der Säcke</label>
+                            <select class="form-select" id="saecke" onchange="pruefeUmfang">
+                                <option value="0">0 Säcke</option>
+                                <option value="1-2">1 bis 2 Säcke</option>
+                                <option value="3-4">3 bis 4 Säcke</option>
+                                <option value=">5">Mehr als 5 Säcke</option>
+                            </select>
+                        </div>
+                    </div>
                     <h6>Welche Kleiderart(en) möchtest du spenden? (Mehrfachauswahl möglich)</h6>
                         <div class="row g-3">
                             <div class="col-6 col-md-4">
