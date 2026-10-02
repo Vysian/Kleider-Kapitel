@@ -6,7 +6,7 @@ let maxErreichterSchritt = 1;
 function aktualisiereLeiste(nr) {
     if (nr > maxErreichterSchritt) maxErreichterSchritt = nr;
 
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
         const schritt = document.getElementById("schritt-" + i);
         schritt.classList.remove("aktiv", "abgeschlossen", "gesperrt");
 
@@ -157,7 +157,73 @@ function geheZuSchritt(nr) {
     document.getElementById("sektion-krisengebiet").style.display = "block";
     aktualisiereLeiste(3);
   }
-  // WEITER von Schritt 4 zu Schritt 5 mit Zusammenfassung der Angaben
+    // WEITER von Schritt 4 zu Schritt 5
+    function weiterZuUebersicht() {
+        if (!validiereAngaben()) return;
+    
+        document.getElementById("uebersicht-vorname").textContent = document.getElementById("vorname").value.trim();
+        document.getElementById("uebersicht-name").textContent = document.getElementById("name").value.trim();
+        document.getElementById("uebersicht-email").textContent = document.getElementById("email").value.trim();
+    
+        document.getElementById("uebersicht-spendenmethode").textContent = 
+            (gewaehlteMethode === "abholung") ? "Abholung per Sammelfahrzeug" : "Übergabe vor Ort";
+    
+        if (gewaehlteMethode === "abholung") {
+            document.getElementById("uebersicht-abholangaben").style.display = "block";
+            document.getElementById("uebersicht-straße").textContent = document.getElementById("straße").value.trim();
+            document.getElementById("uebersicht-hausnr").textContent = document.getElementById("hausnummer").value.trim();
+            document.getElementById("uebersicht-plz").textContent = document.getElementById("abholplz").value.trim();
+            document.getElementById("uebersicht-ort").textContent = document.getElementById("abholort").value.trim();
+    
+            const adresszusatz = document.getElementById("adresszusatz").value.trim();
+            if (adresszusatz) {
+                document.getElementById("uebersicht-adresszusatz").textContent = adresszusatz;
+                document.getElementById("uebersicht-adresszusatzangabe").removeAttribute("hidden");
+            } else {
+                document.getElementById("uebersicht-adresszusatzangabe").setAttribute("hidden", "true");
+            }
+    
+            const telnummer = document.getElementById("telnummer").value.trim();
+            if (telnummer) {
+                document.getElementById("uebersicht-telnummer").textContent = telnummer;
+                document.getElementById("uebersicht-telefonangabe").removeAttribute("hidden");
+            } else {
+                document.getElementById("uebersicht-telefonangabe").setAttribute("hidden", "true");
+            }
+    
+            document.getElementById("uebersicht-abholtag").textContent = document.getElementById("abholtag").value;
+            document.getElementById("uebersicht-abholzeit").textContent = document.getElementById("abholzeit").value;
+        } else {
+            document.getElementById("uebersicht-abholangaben").style.display = "none";
+        } 
+    
+        const kartonsVal = document.getElementById("kartons").value;
+        const saeckeVal = document.getElementById("saecke").value;
+        document.getElementById("uebersicht-kartons").textContent = document.getElementById("kartons").value;
+        document.getElementById("uebersicht-saecke").textContent = document.getElementById("saecke").value;
+    
+        const ausgewaehlteKleider = [];
+        document.querySelectorAll(".selected:not(.card-krisengebiet)").forEach(function(karte) {
+            ausgewaehlteKleider.push(karte.querySelector(".card-title").textContent);
+        });
+        document.getElementById("uebersicht-kleidung-art").textContent = ausgewaehlteKleider.join(", ");
+    
+        const krisengebiet = document.querySelector(".card-krisengebiet.selected");
+        if (krisengebiet) {
+            document.getElementById("uebersicht-krisengebiet-name").textContent = krisengebiet.querySelector(".card-title").textContent;
+        }
+    
+        document.getElementById("sektion-angaben").style.display = "none";
+        document.getElementById("sektion-uebersicht").style.display = "block";
+        aktualisiereLeiste(5);
+    }
+
+    //ZURÜCK von Schritt 5 zu Schritt 4
+    function zurueckZuAngaben() {
+        document.getElementById("sektion-uebersicht").style.display = "none";
+        document.getElementById("sektion-angaben").style.display = "block";
+        aktualisiereLeiste(4)
+  // WEITER von Schritt 5 zur Bestätigung mit Zusammenfassung der Angaben
   function weiterZuBestaetigung() {
     if (!validiereAngaben()) return;
     // Kleiderarten: alle ausgewählten Kacheln die KEINE Krisengebiet-Kacheln sind
@@ -211,7 +277,7 @@ function geheZuSchritt(nr) {
     } 
 
     // Sektion wechseln
-    document.getElementById("sektion-angaben").style.display = "none";
+    document.getElementById("sektion-uebersicht").style.display = "none";
     document.getElementById("sektion-bestaetigung").style.display = "block";
     document.getElementById("Registrierungsschritte").style.display = "none";
     document.getElementById("regIP").style.display = "none";
