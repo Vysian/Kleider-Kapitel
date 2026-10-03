@@ -291,17 +291,17 @@ footer a {
 
 /* Button/Header innerhalb des Accordions anpassen */
 .accordion-button {
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255, 0.25);
   color: #2c2c2c;
   font-weight: 600;
   border-radius: 12px !important;
   padding: 1.25rem 1.5rem;
 }
 
-/* Styling beim Anklicken/Fokussieren */
+/* wenn Text ausgefahren */
 .accordion-button:not(.collapsed) {
-  background-color: #A3A3CC; /* beim Aufklappen */
-  color: #555588;            /* lila-Akzentfarbe */
+  background-color: rgb(255, 255, 255, 0.5);
+  color: #555588;
   box-shadow: none;
 }
 
@@ -312,8 +312,7 @@ footer a {
 /* Inhalt beim Aufklappen */
 .accordion-body {
   padding: 1.25rem 1.5rem;
-  background-color: #ffffff;
-  color: #4a4a4a;
+  background-color: rgb(255, 255, 255, 0.25);
 }
 
 
