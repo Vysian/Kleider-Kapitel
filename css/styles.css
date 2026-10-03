@@ -281,12 +281,11 @@ footer a {
 
 /* Accordion-Karten Styling */
 .accordion-item {
-  background-color: #ffffff;        /* weißer Hintergrund */
-  border-radius: 12px !important;     /* abgerundete Ecken */
-  border: 1px solid #e0e0e0;         /* dezenter Rand */
+  border-radius: 12px !important;                 /* abgerundete Ecken */
+  border: 1px solid #e0e0e0;                      /* dezenter Rand */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);     /* leichter Schatten */
-  margin-bottom: 1rem;           /* Abstand zwischen den Accordions */
-  overflow: hidden;               /* verhindert unschöne Ecken beim Aufklappen */
+  margin-bottom: 1rem;                            /* Abstand zwischen den Accordions */
+  overflow: hidden;                               /* verhindert unschöne Ecken beim Aufklappen */
 }
 
 /* Button/Header innerhalb des Accordions anpassen */
