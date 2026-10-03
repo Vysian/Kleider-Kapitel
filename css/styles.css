@@ -252,7 +252,7 @@ main {
     color: white;
 }
 
-::placerholder {
+::placeholder {
     font-style: italic;
 }
 
@@ -270,10 +270,12 @@ footer a {
 
 #motto {
     background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 12px !important;
     padding: 1.25rem 1.5rem;
 }
 #unterstuetzung {
     background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 12px !important;
     padding: 1.25rem 1.5rem;
 }
 
